@@ -13,9 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DictionaryFileReader implements IFileHandler{
-    
-    //File should be able to read mutliple lines
-    private int number;
+
     private File archivo;
     private ExplorerFile fiEx;
     private Scanner sc;
