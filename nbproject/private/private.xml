@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/Ramirez/Documents/NetBeansProjects/Keyword/src/GUI/FileExplorers/ExcelExplorer.java</file>
+            <file>file:/E:/Ramirez/Documents/NetBeansProjects/Keyword/src/GUI/FileExplorers/DictionaryExplorer.java</file>
+            <file>file:/E:/Ramirez/Documents/NetBeansProjects/Keyword/src/GUI/FileExplorers/FileExplorerDialog.java</file>
+            <file>file:/E:/Ramirez/Documents/NetBeansProjects/Keyword/src/GUI/Controller.java</file>
+        </group>
     </open-files>
 </project-private>

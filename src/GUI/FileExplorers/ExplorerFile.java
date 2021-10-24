@@ -1,27 +1,26 @@
 /**
- * Nuestra version de la clse 'File'
- * Nos ayuda a pasar el directorio y nombre del file a distintas clases de excel
+ * Is our file container,
  */
 package GUI.FileExplorers;
 
+import java.io.File;
+
 public class ExplorerFile {
     
-    private String directory;
-    private String name;
+    private File[] files;
     
-    public ExplorerFile(String directory, String name){
-        this.directory = directory;
-        this.name = name;
-        System.out.println("Name: " + name);
-        System.out.println("directory: " + directory);
+    public ExplorerFile(File[] files){
+        this.files = files;
+        printFiles();
     }
     
-    public String getName(){
-        return this.name;
+    public File[] getFiles(){
+        return this.files;
     }
     
-    public String getDirectory(){
-        return this.directory;
+    private void printFiles(){
+        for (File file: files){
+            System.out.println("File: " + file.getAbsolutePath());
+        }
     }
-
 }

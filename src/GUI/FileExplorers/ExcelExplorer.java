@@ -12,13 +12,14 @@ public class ExcelExplorer extends FileExplorerDialog{
     public static String PATH = "C:\\Users\\Brand\\Downloads";
     
     public ExcelExplorer(JFrame mainWindow){
-        super.dialogWindow = new FileDialog(dialogWindow, "Report Browser", FileDialog.LOAD);
+        super.dialogWindow = new FileDialog(dialogWindow, "Excel Selector", FileDialog.LOAD);
     }
 
     @Override
     public void open() {
         dialogWindow.setDirectory(PATH);
         dialogWindow.setFile(TYPE);
+        dialogWindow.setMultipleMode(false);
         dialogWindow.setVisible(true);
         super.validSelection();
     }

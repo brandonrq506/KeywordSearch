@@ -6,6 +6,7 @@ package FileHandling;
 
 import GUI.FileExplorers.ExplorerFile;
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,7 +42,9 @@ public class ExcelReader implements IFileHandler {
 
     @Override
     public final void open() throws FileNotFoundException {
-        this.file = new BufferedInputStream(new FileInputStream(fiEx.getDirectory() + fiEx.getName()));
+        File[] fileList = fiEx.getFiles();
+        File firstFile = fileList[0];
+        this.file = new BufferedInputStream(new FileInputStream(firstFile.getAbsoluteFile()));
     }
 
     private void setUpExcel() throws IOException {
