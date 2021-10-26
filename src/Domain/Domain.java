@@ -5,6 +5,7 @@
  */
 package Domain;
 
+import FileHandling.Dictionary.Dictionary;
 import Display.IDisplay;
 import FileHandling.*;
 import Filter.IFilter;
@@ -14,7 +15,7 @@ import java.io.IOException;
 public class Domain {
 
     private ExplorerFile currentExcel;
-    private ExplorerFile currentDictionary;
+    private ExplorerFile currentDictionaries;
     
     public void setCurrentExcel(ExplorerFile currentExcelFile){
         this.currentExcel = currentExcelFile;
@@ -24,18 +25,21 @@ public class Domain {
         return this.currentExcel;
     }
 
-    public ExplorerFile getCurrentDictionary() {
-        return currentDictionary;
+    public ExplorerFile getCurrentDictionaries() {
+        return currentDictionaries;
     }
 
     public void setCurrentDictionary(ExplorerFile currentDictionary) {
-        this.currentDictionary = currentDictionary;
+        this.currentDictionaries = currentDictionary;
     }
 
     public void run(IDisplay dMethod, IFilter filter) throws IOException{
+        
+        /*Maybe this dictionary logic should be included within the dictionary
+        object, and not in the run method in the Domain class*/
         Dictionary dictionary;
-        if (currentDictionary == null) dictionary = new Dictionary(); 
-        else dictionary = new Dictionary(currentDictionary);
+        if (currentDictionaries == null) dictionary = new Dictionary(); 
+        else dictionary = new Dictionary(currentDictionaries);
         filter.setKeywords(dictionary.getKeywords());
         
         new Template(

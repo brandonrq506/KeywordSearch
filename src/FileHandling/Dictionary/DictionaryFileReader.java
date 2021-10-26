@@ -1,9 +1,10 @@
 /**
- * Clase encargada de leer las palabras clave que luego utilizaremos para filtrar
- * los mensajes.
+ * Responsabilidades:
+ * 1. Leer el archivo .txt especificado.
  */
-package FileHandling;
+package FileHandling.Dictionary;
 
+import FileHandling.IFileHandler;
 import GUI.FileExplorers.ExplorerFile;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +27,7 @@ public class DictionaryFileReader implements IFileHandler{
 
     @Override
     public final void open() throws FileNotFoundException {
-        archivo = new File(fiEx.getDirectory() + fiEx.getName());
+        archivo = new File(fiEx.getFiles());
         sc = new Scanner(archivo);
     }
     

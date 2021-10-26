@@ -1,26 +1,24 @@
 /**
- * Posee un DicReader. Se encarga no solo de delegar la lectura de palabras
- * clave, sino tambien de proveer acceso a dichas palabras.
+ * Responsabilidades:
+ * 1. Generar un dictioanryReader encargado de leer las palabras clave.
+ * 2. Almacenar las palabras clave.
+ * 3. Almacenar el nombre del archivo del cual se obtuvieron las palabras clave.
  */
-package FileHandling;
+package FileHandling.Dictionary;
 
 import GUI.FileExplorers.ExplorerFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * THINGS I'M MISSING
- * 2. Implement a way to get blackKeywords
- */
-
 public class Dictionary {
     
     private DictionaryFileReader dicReader;
     private List<String> keywords;
-    private List<String> blackList;
+    private String textFileName;
     
-    //When no directories in Domain > dictionaryFiles
+    
+    //Cuando no se especifica leer un txt file, se utilizara esto por defecto.
     public Dictionary(){
         this.keywords = new ArrayList<>();
         this.keywords.add(" ");
@@ -38,8 +36,8 @@ public class Dictionary {
         return this.keywords;
     }
     
-    public List<String> getBlackList(){
-        return null; //We still need to create a method inside dicReader
+    public String getTextFileName(){
+        return this.textFileName;
     }
     
     public void close() throws IOException{

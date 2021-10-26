@@ -4,6 +4,7 @@
  */
 package Domain;
 
+import FileHandling.Dictionary.Dictionary;
 import Conversations.Conversation;
 import Display.IDisplay;
 import FileHandling.*;
