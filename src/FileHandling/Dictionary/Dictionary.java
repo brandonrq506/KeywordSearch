@@ -6,7 +6,7 @@
  */
 package FileHandling.Dictionary;
 
-import GUI.FileExplorers.ExplorerFile;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +22,15 @@ public class Dictionary {
     public Dictionary(){
         this.keywords = new ArrayList<>();
         this.keywords.add(" ");
+        this.textFileName = "Default";
     }
     
-    //When there are directories in Domain > dictionaryFiles
-    public Dictionary(ExplorerFile fiEx) throws IOException{
-        dicReader = new DictionaryFileReader(fiEx);
-        this.keywords = dicReader.getKeywords();
-        System.out.println(keywords);
-        dicReader.close();
+    //Cuando al menos un .txt fue selecionado
+    public Dictionary(File dictionaryFile) throws IOException{
+        this.dicReader = new DictionaryFileReader(dictionaryFile);
+        setKeywords();
+        setDictionaryName(dictionaryFile);
+        closeDictionaryReader();
     }
     
     public List<String> getKeywords(){
@@ -40,7 +41,28 @@ public class Dictionary {
         return this.textFileName;
     }
     
-    public void close() throws IOException{
-        dicReader.close();
+    private void setKeywords(){
+        this.keywords = dicReader.getKeywords();
     }
+    
+    private void setDictionaryName(File dictionaryFile){
+        this.textFileName = dictionaryFile.getName();
+    }
+    
+    private void closeDictionaryReader() throws IOException{
+        this.dicReader.close();
+    }
+
+    @Override
+    public String toString() {
+        
+        System.out.println("Dictionary Name: " + this.textFileName);
+        for(String keyword: keywords){
+            System.out.println(keyword);
+        }
+        
+        return "";
+    }
+    
+    
 }

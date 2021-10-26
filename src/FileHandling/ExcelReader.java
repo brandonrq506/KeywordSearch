@@ -42,7 +42,8 @@ public class ExcelReader implements IFileHandler {
 
     @Override
     public final void open() throws FileNotFoundException {
-        File[] fileList = fiEx.getFiles();
+        //THIS MUST BE CHANGED!!!
+        File[] fileList = fiEx.getAllFiles();
         File firstFile = fileList[0];
         this.file = new BufferedInputStream(new FileInputStream(firstFile.getAbsoluteFile()));
     }

@@ -5,9 +5,9 @@
  */
 package Domain;
 
-import FileHandling.Dictionary.Dictionary;
 import Display.IDisplay;
 import FileHandling.*;
+import FileHandling.Dictionary.DictionaryHolder;
 import Filter.IFilter;
 import GUI.FileExplorers.*;
 import java.io.IOException;
@@ -35,17 +35,12 @@ public class Domain {
 
     public void run(IDisplay dMethod, IFilter filter) throws IOException{
         
-        /*Maybe this dictionary logic should be included within the dictionary
-        object, and not in the run method in the Domain class*/
-        Dictionary dictionary;
-        if (currentDictionaries == null) dictionary = new Dictionary(); 
-        else dictionary = new Dictionary(currentDictionaries);
+        DictionaryHolder dicHolder = new DictionaryHolder(currentDictionaries);
         filter.setKeywords(dictionary.getKeywords());
         
         new Template(
             new ExcelReader(currentExcel),
             new ExcelWriter(currentExcel),
-            dictionary,
             dMethod,
             filter
         ).run();

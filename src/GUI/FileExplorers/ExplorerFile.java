@@ -26,7 +26,7 @@ public class ExplorerFile{
     }
 
     private void printFiles(){
-        System.out.println("Files Loaded:");
+        System.out.println("Files Loaded --------------------");
         for (File file: files){
             System.out.println("File: " + file.getAbsolutePath());
         }

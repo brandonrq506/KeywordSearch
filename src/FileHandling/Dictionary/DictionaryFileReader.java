@@ -5,7 +5,6 @@
 package FileHandling.Dictionary;
 
 import FileHandling.IFileHandler;
-import GUI.FileExplorers.ExplorerFile;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,24 +14,22 @@ import java.util.Scanner;
 
 public class DictionaryFileReader implements IFileHandler{
 
-    private File archivo;
-    private ExplorerFile fiEx;
+    private final File textFile;
     private Scanner sc;
     
     
-    public DictionaryFileReader(ExplorerFile fiEx) throws IOException {
-        this.fiEx = fiEx;
+    public DictionaryFileReader(File textFile) throws IOException {
+        this.textFile = textFile;
         open();
     }
 
     @Override
     public final void open() throws FileNotFoundException {
-        archivo = new File(fiEx.getFiles());
-        sc = new Scanner(archivo);
+        sc = new Scanner(this.textFile);
     }
     
     public List<String> getKeywords(){
-        return Arrays.asList(sc.nextLine().split(","));
+        return Arrays.asList(sc.nextLine().split("\\n"));
     }
 
     @Override

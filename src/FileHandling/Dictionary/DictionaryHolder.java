@@ -1,10 +1,3 @@
-package FileHandling.Dictionary;
-
-import GUI.FileExplorers.ExplorerFile;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-
 /**
  * Responsabilities:
  * 1. Inicializar todos los diccionarios. 
@@ -16,12 +9,19 @@ import java.util.List;
  * 5. Proveer diccionarios a otras clases.
  */
 
+package FileHandling.Dictionary;
+
+import GUI.FileExplorers.ExplorerFile;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
 public class DictionaryHolder {
 
     private List<Dictionary> dictionaries;
     private Iterator<Dictionary> iterator;
 
-    
     public DictionaryHolder(ExplorerFile dictionaryPack) {
         if (dictionaryPack != null) {
             initDictionaries(dictionaryPack);
@@ -42,15 +42,18 @@ public class DictionaryHolder {
         this.dictionaries.add(new Dictionary());
         this.iterator = this.dictionaries.iterator();
     }
-    
+
     private void initDictionaries(ExplorerFile dictionaryPack) {
         while (dictionaryPack.hasNext()) {
-                initFullDictionary(dictionaryPack.getNext());
-            }
+            initFullDictionary(dictionaryPack.getNext());
+        }
         this.iterator = this.dictionaries.iterator();
     }
-    
+
     private void initFullDictionary(File file) {
-        this.dictionaries.add(new Dictionary(file));
+        try {
+            this.dictionaries.add(new Dictionary(file));
+        } catch (IOException e) {
+        }
     }
 }

@@ -19,10 +19,9 @@ public class Template{
     private IDisplay displayMethod;
     private IFilter filter;
 
-    public Template(ExcelReader exread, ExcelWriter exwrite, Dictionary dict, IDisplay displayMethod, IFilter filter) {
+    public Template(ExcelReader exread, ExcelWriter exwrite, IDisplay displayMethod, IFilter filter) {
         this.exread = exread;
         this.exwrite = exwrite;
-        this.dict = dict;
         this.displayMethod = displayMethod;
         this.filter = filter;
     }
