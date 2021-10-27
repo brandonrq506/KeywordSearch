@@ -57,9 +57,9 @@ public class Dictionary {
     public String toString() {
         
         System.out.println("Dictionary Name: " + this.textFileName);
-        for(String keyword: keywords){
+        keywords.forEach(keyword -> {
             System.out.println(keyword);
-        }
+        });
         
         return "";
     }

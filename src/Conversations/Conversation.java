@@ -91,7 +91,7 @@ public class Conversation {
     }
     
     /**
-     * Checks there are as many elements as we are requesting
+     * Checks there are as many elements as we are requesting.
      * If not, return as many elements as there are in the list
      * @param Nmessages Number of messages requested by user
      * @return A list of messages of specified length

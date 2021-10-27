@@ -36,7 +36,7 @@ public class Domain {
     public void run(IDisplay dMethod, IFilter filter) throws IOException{
         
         DictionaryHolder dicHolder = new DictionaryHolder(currentDictionaries);
-        filter.setKeywords(dictionary.getKeywords());
+        filter.setKeywords(dicHolder);
         
         new Template(
             new ExcelReader(currentExcel),

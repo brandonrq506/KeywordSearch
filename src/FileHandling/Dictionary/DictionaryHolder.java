@@ -31,14 +31,20 @@ public class DictionaryHolder {
         }
         initEmptyDictionary();
     }
-
-    public boolean hasNext() {
-        return this.iterator.hasNext();
+    
+    public List<Dictionary> getDictionaries(){
+        return this.dictionaries;
     }
-
-    public Dictionary getNext() {
-        return this.iterator.next();
-    }
+    
+//Commented until we have a better solution to the need to iterate through 
+//all the dictionaries multiple times
+//    public boolean hasNext() {
+//        return this.iterator.hasNext();
+//    }
+//    
+//    public Dictionary getNext() {
+//        return this.iterator.next();
+//    }
 
     private void initEmptyDictionary() {
         this.dictionaries.add(new Dictionary());
