@@ -5,7 +5,7 @@ import Conversations.Message;
 import Filter.FilterBehavior.FilterBehavior;
 import java.util.List;
 
-public abstract class FilterAssistant {
+public class FilterAssistant {
     
     protected List<Message> messages;
     protected List<String> keywords;
@@ -23,5 +23,7 @@ public abstract class FilterAssistant {
         this.messages = messages;
     }
     
-    public abstract boolean filter();
+    public boolean filter(){
+        
+    }
 }

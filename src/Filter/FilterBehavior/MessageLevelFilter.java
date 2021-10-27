@@ -1,20 +1,9 @@
-
 package Filter.FilterBehavior;
 
 import Conversations.Message;
 import Filter.FilterAssistant;
 
-/**
- * Ejemplo de uso:
- * Keywords = {website, retainer, order - confirmation - website}
- * 
- * Si algun mensaje de la conversation contiene las palabras 'website' o 'retainer'
- * esto será considerado como que el mensaje cumple con los criterios de filtro
- * Si un solo mensaje contiene {website, confirmation y order} ese mensaje
- * cumple con los criterios del filtro.
- */
-
-public class MessageLevelFilter extends FilterAssistant{
+public class MessageLevelFilter{
 
     @Override
     public boolean filter() {

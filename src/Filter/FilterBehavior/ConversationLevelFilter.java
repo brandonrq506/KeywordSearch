@@ -16,7 +16,7 @@ import java.util.List;
  * 'website'.
  */
 
-public class ConversationLevelFilter extends FilterAssistant{
+public class ConversationLevelFilter{
 
     @Override
     public boolean filter() {
