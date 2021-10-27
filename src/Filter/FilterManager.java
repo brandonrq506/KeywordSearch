@@ -1,7 +1,7 @@
 
 package Filter;
 
-import Conversations.Message;
+import Conversations.*;
 import FileHandling.Dictionary.Dictionary;
 import Filter.FilterBehavior.FilterBehavior;
 import Filter.MessageSelector.MessageSelector;
@@ -22,13 +22,13 @@ public class FilterManager {
         this.messageSelector = messageSelector;
     }
     
-    public void Run(){
+    public void Run(Conversation conversation){
         createAssitant();
-        this.assistant.setMessages(getMessages());
+        this.assistant.setMessages(getMessages(conversation));
     }
     
-    private List<Message> getMessages(){
-        
+    private List<Message> getMessages(Conversation conversation){
+        return this.messageSelector.getMessages(conversation);
     }
     
     private boolean Filter(){
