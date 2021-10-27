@@ -6,24 +6,13 @@ import Filter.Behavior.FilterBehavior;
 import Filter.MessageSelector.MessageSelector;
 import java.util.List;
 
-/**
- * Init with MessageSelector & FilterBehavior Sets the FilterBehavior to our
- * FilterBehavior
- *
- * Receive the conversation Retrieves the messages we need from the conversation
- * Process the Filter() method If true adds the information we need to the
- * conversation Sends the conversation to the 'match; queue
- *
- * If false Send the conversation to the 'noMatch' queue
- */
-public class FilterAssistant implements Runnable {
+public class FilterAssistant  {
 
     FilterBehavior fBehavior;
     MessageSelector mSelector;
     FilterManager fManager;
     List<Dictionary> dictionaries;
 
-    Conversation currentConversation;
     List<Message> currentMessages;
 
     public FilterAssistant(FilterBehavior fBehavior,
@@ -36,31 +25,27 @@ public class FilterAssistant implements Runnable {
         this.dictionaries = dictionaries;
     }
 
-    @Override
-    public void run() {
-        try {
-            while () {
-                getConversation();
-                setMessages();
-                for (Dictionary dictionary : this.dictionaries) {
-
-                }
+    private void filter(Conversation conversation) {    
+        //Once we get a conversation, we:
+        
+        //Get the messages we need out of that conversation
+        //We set those as our current messages
+        this.currentMessages = this.mSelector.getMessages(conversation);
+        
+        //We assign those messages to our filterBehavior
+        this.fBehavior.setMessages(currentMessages);
+        
+        //For ever dictionary we explore, we update keywords
+        for (Dictionary dictionary : this.dictionaries){
+            this.fBehavior.setKeywords(dictionary.getKeywords());
+            
+            
+            //Once our filterBehavior is loaded with the messages and keywords we want:
+            if (this.fBehavior.filter()) {
+                conversation.addAdditionalColumn(this.fBehavior.getKeyword());
+                conversation.addAdditionalColumn(dictionary.getTextFileName());
+                
             }
-
-        } catch (InterruptedException ex) {
-            System.out.println("Error on a Thread");
         }
-    }
-
-    private void getConversation() throws InterruptedException {
-        this.currentConversation = this.fManager.getConversation();
-    }
-
-    private void setMessages() {
-        this.currentMessages = this.mSelector.getMessages(currentConversation);
-    }
-
-    private void filter() {
-        this.fBehavior.filter();
     }
 }

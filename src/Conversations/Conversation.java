@@ -71,6 +71,10 @@ public class Conversation {
             additionalColums.add(iterator.next());
         }
     }
+    
+    public void addAdditionalColumn(String info){
+        this.additionalColums.add(info);
+    }
 
     public List<Message> getAllMessages() {
         return this.messages;
