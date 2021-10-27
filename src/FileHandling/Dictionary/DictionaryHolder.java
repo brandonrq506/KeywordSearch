@@ -21,7 +21,9 @@ public class DictionaryHolder {
 
     private List<Dictionary> dictionaries;
     private Iterator<Dictionary> iterator;
-
+    
+    
+    //Debemos verificar que en caso de ser NULL, realmente no retorne una excepcion
     public DictionaryHolder(ExplorerFile dictionaryPack) {
         if (dictionaryPack != null) {
             initDictionaries(dictionaryPack);

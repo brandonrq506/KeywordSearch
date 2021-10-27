@@ -2,7 +2,7 @@ package Conversations;
 
 public class Message {
     
-    private String text;
+    private final String text;
     private int sender;
     private boolean passedFilter;
 

@@ -2,35 +2,26 @@
 package Filter;
 
 import Conversations.Conversation;
-import Conversations.Message;
-import java.util.List;
+import FileHandling.Dictionary.*;
 
-public abstract class Filter implements IFilter{
+public abstract class Filter{
     
-    protected List<Message> messages;
-    protected List<String> keywords;
-    protected int[] senders;
+    protected DictionaryHolder dicHolder;
+    protected Conversation currentConversation;
+    protected Dictionary currnetDictionary;
     
-    @Override
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    
+    public Filter(DictionaryHolder dicHolder){
+        this.dicHolder = dicHolder;
     }
     
-    @Override
-    public void setKeywords(List<String> keywords){
-        this.keywords = keywords;
+    public void setDictionaryHolder(DictionaryHolder dicHolder){
+        this.dicHolder = dicHolder;
     }
     
-    @Override
-    public void setSenders(int[] senders){
-        this.senders = senders;
+    public void setConversation(Conversation conversation){
+        this.currentConversation = conversation;
     }
     
-    @Override
-    public boolean processFilter(Conversation conversation){
-        if(conversation.getMessagesCount() == 0) return false;
-        else if(senders[0] == -1) this.messages = conversation.getAllMessages();
-        else                      this.messages = conversation.getMessages(senders);
-        return filter();
-    }
+    protected abstract boolean filter();
 }
