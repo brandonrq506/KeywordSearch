@@ -1,29 +1,50 @@
-
 package Filter;
 
-import Conversations.Message;
-import Filter.FilterBehavior.FilterBehavior;
-import java.util.List;
+import Filter.Behavior.FilterBehavior;
+import Filter.MessageSelector.MessageSelector;
 
-public class FilterAssistant {
-    
-    protected List<Message> messages;
-    protected List<String> keywords;
-    protected FilterBehavior filterBehavior;
-    
-    public FilterAssistant(FilterBehavior filterBehavior){
-        this.filterBehavior = filterBehavior;
+/**
+ * Init with MessageSelector & FilterBehavior 
+ * Sets the FilterBehavior to our
+ * FilterBehavior
+ *
+ * Receive the conversation 
+ * Retrieves the messages we need from the conversation
+ * Process the Filter() method If true adds the information we need to the
+ * conversation Sends the conversation to the 'match; queue
+ *
+ * If false Send the conversation to the 'noMatch' queue
+ */
+public class FilterAssistant implements Runnable {
+
+    FilterBehavior fBehavior;
+    MessageSelector mSelector;
+    FilterManager fManager;
+
+    public FilterAssistant(FilterBehavior fBehavior,
+            MessageSelector mSelector,
+            FilterManager fManager) {
+        this.fBehavior = fBehavior;
+        this.mSelector = mSelector;
+        this.fManager = fManager;
     }
 
-    public void setKeywords(List<String> keywords){
-        this.keywords = keywords;
+    @Override
+    public void run() {
+        //Get a conversation
+        //Get messages for that conversation
+        //While loop for all dictionaries
     }
     
-    public void setMessages(List<Message> messages){
-        this.messages = messages;
+    private void getConversation(){
+        //FilterManager will have a SYNC method that provides us with converstion
     }
     
-    public boolean filter(){
-        
+    private void setMessages(){
+        //We use this in our fBehavior initializer
+    }
+    
+    private void filter(){
+        this.fBehavior.filter();
     }
 }

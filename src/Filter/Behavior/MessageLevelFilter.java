@@ -1,9 +1,8 @@
-package Filter.FilterBehavior;
+package Filter.Behavior;
 
 import Conversations.Message;
-import Filter.FilterAssistant;
 
-public class MessageLevelFilter{
+public class MessageLevelFilter extends FilterBehavior{
 
     @Override
     public boolean filter() {

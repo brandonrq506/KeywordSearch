@@ -6,9 +6,9 @@ package GUI;
 
 import Display.IDisplay;
 import Domain.Domain;
-import Filter.FilterBehavior.ConversationLevelFilter;
+import Filter.FilterAssistant.ConversationLevelFilter;
 import Filter.IFilter;
-import Filter.FilterBehavior.MessageLevelFilter;
+import Filter.FilterAssistant.MessageLevelFilter;
 import GUI.FileExplorers.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

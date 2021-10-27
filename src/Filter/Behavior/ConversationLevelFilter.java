@@ -1,8 +1,7 @@
 
-package Filter.FilterBehavior;
+package Filter.Behavior;
 
 import Conversations.Message;
-import Filter.FilterAssistant;
 import java.util.List;
 
 /**
@@ -16,7 +15,7 @@ import java.util.List;
  * 'website'.
  */
 
-public class ConversationLevelFilter{
+public class ConversationLevelFilter extends FilterBehavior{
 
     @Override
     public boolean filter() {
