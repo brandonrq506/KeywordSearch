@@ -22,7 +22,7 @@ public class FilterAssistant implements Runnable {
     MessageSelector mSelector;
     FilterManager fManager;
     List<Dictionary> dictionaries;
-    
+
     Conversation currentConversation;
     List<Message> currentMessages;
 
@@ -39,16 +39,14 @@ public class FilterAssistant implements Runnable {
     @Override
     public void run() {
         try {
-            getConversation();
-            setMessages();
-            for(Dictionary dictionary : this.dictionaries){
-                
+            while () {
+                getConversation();
+                setMessages();
+                for (Dictionary dictionary : this.dictionaries) {
+
+                }
             }
-            
-            
-            
-            
-            
+
         } catch (InterruptedException ex) {
             System.out.println("Error on a Thread");
         }

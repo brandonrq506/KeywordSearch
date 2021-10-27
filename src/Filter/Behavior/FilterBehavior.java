@@ -9,6 +9,9 @@ public abstract class FilterBehavior {
     protected List<Message> messages;
     protected List<String> keywords;
     
+    public FilterBehavior(){
+    }
+    
     public FilterBehavior(List<Message> messages, List<String> keywords){
         this.messages = messages;
         this.keywords = keywords;
