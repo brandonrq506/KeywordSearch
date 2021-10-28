@@ -6,13 +6,13 @@ package GUI;
 
 import Display.IDisplay;
 import Domain.Domain;
-import Filter.FilterAssistant.ConversationLevelFilter;
-import Filter.IFilter;
-import Filter.FilterAssistant.MessageLevelFilter;
+import Filter.Behavior.*;
+import Filter.MessageSelector.MessageSelector;
 import GUI.FileExplorers.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
 
 public class Controller {
 
@@ -75,9 +75,9 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                domain.run(getDisplayOption(), getFilter());
+                domain.run(getDisplayOption(), getFilter(), getMessageSelector());
             } catch (IOException ex) {
-                System.out.println(ex.fillInStackTrace());
+                
             }
         }
     };
@@ -87,18 +87,20 @@ public class Controller {
         return new Factory_toDisplayArray().create(selection);
     }
 
-    private IFilter getFilter() {
-        IFilter filterBehavior;
+    private FilterBehavior getFilter() {
+        FilterBehavior filterBehavior;
         if (frame.cbFilterLevel().getSelectedIndex() == 0) {
             filterBehavior = new MessageLevelFilter();
         } else {
             filterBehavior = new ConversationLevelFilter();
         }
-
-        filterBehavior.setSenders(
-            new Factory_Filter().create(frame.cbFilter().getSelectedItem().toString())
-        );
-
         return filterBehavior;
+    }
+    
+    private MessageSelector getMessageSelector(){
+        int[] sender = new Factory_Filter().create(frame.cbFilter().getSelectedItem().toString());
+        int NMessages = Integer.parseInt(this.frame.tfNumberMessages().getText());
+        
+        return new MessSelectorFactory(sender, NMessages).getMS();
     }
 }

@@ -22,14 +22,16 @@ public class FilterManager {
     public FilterManager() {
         this.match = new LinkedList<>();
         this.noMatch = new LinkedList<>();
-        createFilterAssistant();
     }
     
-    public void Filter(){
+    public void Filter(Conversation conversation){
+        boolean passed = assistant.filter(conversation);
         
+        if (passed) this.match.add(conversation);
+        else this.noMatch.add(conversation);
     }
 
-    private void createFilterAssistant() {
+    public void createFilterAssistant() {
         this.assistant = new FilterAssistant(filterBehavior, messageSelector, this, dictionaries);
     }
 
@@ -51,5 +53,9 @@ public class FilterManager {
 
     protected void addToNoMatch(Conversation conversation) {
         this.noMatch.add(conversation);
+    }
+    
+    public List<Conversation> getMatchList(){
+        return this.match;
     }
 }

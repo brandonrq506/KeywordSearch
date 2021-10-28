@@ -25,7 +25,7 @@ public class FilterAssistant  {
         this.dictionaries = dictionaries;
     }
 
-    private void filter(Conversation conversation) {    
+    public boolean filter(Conversation conversation) {
         //Once we get a conversation, we:
         
         //Get the messages we need out of that conversation
@@ -44,8 +44,9 @@ public class FilterAssistant  {
             if (this.fBehavior.filter()) {
                 conversation.addAdditionalColumn(this.fBehavior.getKeyword());
                 conversation.addAdditionalColumn(dictionary.getTextFileName());
-                
+                return true;
             }
         }
+        return false;
     }
 }

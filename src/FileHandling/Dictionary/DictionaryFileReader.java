@@ -8,7 +8,7 @@ import FileHandling.IFileHandler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +29,15 @@ public class DictionaryFileReader implements IFileHandler{
     }
     
     public List<String> getKeywords(){
-        return Arrays.asList(sc.nextLine().split("\\n"));
+        //return Arrays.asList(sc.nextLine().split("\\n"));
+        
+        List<String> keywords = new ArrayList<>();
+        
+        while(sc.hasNextLine()){
+            keywords.add(sc.nextLine());
+        }
+        
+        return keywords;
     }
 
     @Override

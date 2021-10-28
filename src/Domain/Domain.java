@@ -8,7 +8,9 @@ package Domain;
 import Display.IDisplay;
 import FileHandling.*;
 import FileHandling.Dictionary.DictionaryHolder;
-import Filter.IFilter;
+import Filter.Behavior.FilterBehavior;
+import Filter.FilterManager;
+import Filter.MessageSelector.MessageSelector;
 import GUI.FileExplorers.*;
 import java.io.IOException;
 
@@ -33,16 +35,21 @@ public class Domain {
         this.currentDictionaries = currentDictionary;
     }
 
-    public void run(IDisplay dMethod, IFilter filter) throws IOException{
+    public void run(IDisplay dMethod, FilterBehavior filterBehavior, MessageSelector MS) throws IOException{
         
         DictionaryHolder dicHolder = new DictionaryHolder(currentDictionaries);
-        filter.setKeywords(dicHolder);
+        FilterManager filManager = new FilterManager();
+        filManager.setDictionaries(dicHolder.getDictionaries());
+        filManager.setFilterBehavior(filterBehavior);
+        filManager.setMessageSelector(MS);
+        filManager.createFilterAssistant();
+        
         
         new Template(
             new ExcelReader(currentExcel),
             new ExcelWriter(currentExcel),
             dMethod,
-            filter
+            filManager
         ).run();
     }
 }

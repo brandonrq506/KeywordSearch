@@ -14,6 +14,7 @@ package FileHandling.Dictionary;
 import GUI.FileExplorers.ExplorerFile;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class DictionaryHolder {
     
     //Debemos verificar que en caso de ser NULL, realmente no retorne una excepcion
     public DictionaryHolder(ExplorerFile dictionaryPack) {
+        this.dictionaries = new ArrayList<>();
         if (dictionaryPack != null) {
             initDictionaries(dictionaryPack);
             return;
@@ -47,6 +49,7 @@ public class DictionaryHolder {
 //    }
 
     private void initEmptyDictionary() {
+        this.dictionaries = new ArrayList<>();
         this.dictionaries.add(new Dictionary());
         this.iterator = this.dictionaries.iterator();
     }
@@ -61,6 +64,7 @@ public class DictionaryHolder {
     private void initFullDictionary(File file) {
         try {
             this.dictionaries.add(new Dictionary(file));
+            System.out.println("Dictionary Added");
         } catch (IOException e) {
         }
     }
