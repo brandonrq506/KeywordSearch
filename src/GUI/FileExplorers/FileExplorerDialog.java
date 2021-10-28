@@ -16,7 +16,7 @@ public abstract class FileExplorerDialog {
     
     protected void validSelection(){
         if(dialogWindow.getFile() != null)
-            file = new ExplorerFile(dialogWindow.getDirectory(), dialogWindow.getFile());
+            file = new ExplorerFile(dialogWindow.getFiles());
     }
     
     public boolean fileSelected(){

@@ -1,29 +1,25 @@
-/**
- * Hilo encargado de obtener las filas del excel, crear las conversaciones,
- * filtrar las conversaciones y enviarlas el Excel Reader.
- */
+
+
 package Domain;
 
 import Conversations.Conversation;
 import Display.IDisplay;
 import FileHandling.*;
-import Filter.IFilter;
+import Filter.FilterManager;
 import java.io.IOException;
 
 public class Template{
 
     private ExcelReader exread;
     private ExcelWriter exwrite;
-    private Dictionary dict;
     private IDisplay displayMethod;
-    private IFilter filter;
+    private FilterManager filterManager;
 
-    public Template(ExcelReader exread, ExcelWriter exwrite, Dictionary dict, IDisplay displayMethod, IFilter filter) {
+    public Template(ExcelReader exread, ExcelWriter exwrite, IDisplay displayMethod, FilterManager filterManager) {
         this.exread = exread;
         this.exwrite = exwrite;
-        this.dict = dict;
         this.displayMethod = displayMethod;
-        this.filter = filter;
+        this.filterManager = filterManager;
     }
 
     public void run() {
@@ -31,10 +27,16 @@ public class Template{
             Conversation chat = new Conversation();
             chat.setDisplayMethod(displayMethod);
             chat.transform(exread.getNext());
-            if (filter.processFilter(chat)) {
-                exwrite.addConversation(chat);
-            }
+            filterManager.Filter(chat);
         }
+        
+        try {
+            exread.close();
+        } catch (IOException ex) {
+            System.out.println("Error closing Excel Reader File");
+        }
+        
+        exwrite.addConverastions(filterManager.getMatchList());
         try {
             exwrite.open();
             exwrite.write();

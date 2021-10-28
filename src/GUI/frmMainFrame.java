@@ -5,6 +5,7 @@ package GUI;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 public class frmMainFrame extends javax.swing.JFrame {
 
@@ -26,6 +27,7 @@ public class frmMainFrame extends javax.swing.JFrame {
         btnRun = new javax.swing.JButton();
         btnExcel = new javax.swing.JButton();
         btnDictionary = new javax.swing.JButton();
+        tn_NumberMessages = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Brandon Keyword Search Tool");
@@ -50,6 +52,8 @@ public class frmMainFrame extends javax.swing.JFrame {
 
         btnDictionary.setText("Dictionary");
 
+        tn_NumberMessages.setText("-1");
+
         javax.swing.GroupLayout pnlMainBackgroundLayout = new javax.swing.GroupLayout(pnlMainBackground);
         pnlMainBackground.setLayout(pnlMainBackgroundLayout);
         pnlMainBackgroundLayout.setHorizontalGroup(
@@ -66,7 +70,9 @@ public class frmMainFrame extends javax.swing.JFrame {
                     .addComponent(lblFilter)
                     .addComponent(cbDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDisplay))
-                .addContainerGap(719, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(tn_NumberMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(645, Short.MAX_VALUE))
         );
         pnlMainBackgroundLayout.setVerticalGroup(
             pnlMainBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +88,9 @@ public class frmMainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblApplyKeywords)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbFilterLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlMainBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbFilterLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tn_NumberMessages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnExcel)
                 .addGap(38, 38, 38)
@@ -118,6 +126,7 @@ public class frmMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblDisplay;
     private javax.swing.JLabel lblFilter;
     private javax.swing.JPanel pnlMainBackground;
+    private javax.swing.JTextField tn_NumberMessages;
     // End of variables declaration//GEN-END:variables
 
     public JButton btnExcel(){
@@ -142,5 +151,9 @@ public class frmMainFrame extends javax.swing.JFrame {
     
     public JComboBox cbFilterLevel(){
         return this.cbFilterLevel;
+    }
+    
+    public JTextField tfNumberMessages(){
+        return this.tn_NumberMessages;
     }
 }

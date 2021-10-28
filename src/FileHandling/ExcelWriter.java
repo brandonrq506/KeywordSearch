@@ -73,7 +73,7 @@ public class ExcelWriter implements IFileHandler {
     @Override
     public void open() throws FileNotFoundException {
         this.wb = new XSSFWorkbook();
-        this.ss = wb.createSheet(fiEx.getName());
+        this.ss = wb.createSheet("Testing this");
         sheetConfig();
     }
 
@@ -82,7 +82,7 @@ public class ExcelWriter implements IFileHandler {
         System.out.println("Total: " + conversations.size());
         try {
             try (
-                    FileOutputStream out = new FileOutputStream(new File(fiEx.getDirectory() + fiEx.getName().substring(0, fiEx.getName().indexOf(".")) + "_Results.xlsx"))) {
+                    FileOutputStream out = new FileOutputStream(new File("E:\\Ramirez\\Downloads\\" + "Results.xlsx"))) {
                 wb.write(out);
                 System.out.println("File closed");
             }
@@ -129,8 +129,8 @@ public class ExcelWriter implements IFileHandler {
         this.row = ss.createRow(++rowNum);
     }
 
-    public void addConversation(Conversation conversation) {
-        this.conversations.add(conversation);
+    public void addConverastions(List<Conversation> conversation) {
+        this.conversations.addAll(conversation);
     }
 
     private void sheetConfig() {

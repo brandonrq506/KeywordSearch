@@ -52,7 +52,9 @@
                       <Component id="cbDisplay" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="lblDisplay" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="719" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="tn_NumberMessages" min="-2" pref="47" max="-2" attributes="0"/>
+                  <EmptySpace pref="645" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -70,7 +72,10 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblApplyKeywords" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbFilterLevel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbFilterLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tn_NumberMessages" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnExcel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -151,6 +156,11 @@
         <Component class="javax.swing.JButton" name="btnDictionary">
           <Properties>
             <Property name="text" type="java.lang.String" value="Dictionary"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tn_NumberMessages">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="-1"/>
           </Properties>
         </Component>
       </SubComponents>

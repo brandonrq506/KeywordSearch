@@ -7,14 +7,17 @@ package Domain;
 
 import Display.IDisplay;
 import FileHandling.*;
-import Filter.IFilter;
+import FileHandling.Dictionary.DictionaryHolder;
+import Filter.Behavior.FilterBehavior;
+import Filter.FilterManager;
+import Filter.MessageSelector.MessageSelector;
 import GUI.FileExplorers.*;
 import java.io.IOException;
 
 public class Domain {
 
     private ExplorerFile currentExcel;
-    private ExplorerFile currentDictionary;
+    private ExplorerFile currentDictionaries;
     
     public void setCurrentExcel(ExplorerFile currentExcelFile){
         this.currentExcel = currentExcelFile;
@@ -24,26 +27,29 @@ public class Domain {
         return this.currentExcel;
     }
 
-    public ExplorerFile getCurrentDictionary() {
-        return currentDictionary;
+    public ExplorerFile getCurrentDictionaries() {
+        return currentDictionaries;
     }
 
     public void setCurrentDictionary(ExplorerFile currentDictionary) {
-        this.currentDictionary = currentDictionary;
+        this.currentDictionaries = currentDictionary;
     }
 
-    public void run(IDisplay dMethod, IFilter filter) throws IOException{
-        Dictionary dictionary;
-        if (currentDictionary == null) dictionary = new Dictionary(); 
-        else dictionary = new Dictionary(currentDictionary);
-        filter.setKeywords(dictionary.getKeywords());
+    public void run(IDisplay dMethod, FilterBehavior filterBehavior, MessageSelector MS) throws IOException{
+        
+        DictionaryHolder dicHolder = new DictionaryHolder(currentDictionaries);
+        FilterManager filManager = new FilterManager();
+        filManager.setDictionaries(dicHolder.getDictionaries());
+        filManager.setFilterBehavior(filterBehavior);
+        filManager.setMessageSelector(MS);
+        filManager.createFilterAssistant();
+        
         
         new Template(
             new ExcelReader(currentExcel),
             new ExcelWriter(currentExcel),
-            dictionary,
             dMethod,
-            filter
+            filManager
         ).run();
     }
 }
