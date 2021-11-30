@@ -2,7 +2,6 @@ package Conversations;
 
 import Display.IDisplay;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class Conversation {
         try {
             handleDisplay(columns.get(1).toLowerCase());
         } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            System.out.println(e);
             System.out.println("Issue on: " + transcriptId);
         }
         disposition = columns.get(2);

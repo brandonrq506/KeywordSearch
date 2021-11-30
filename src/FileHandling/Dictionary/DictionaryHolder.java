@@ -49,7 +49,6 @@ public class DictionaryHolder {
 //    }
 
     private void initEmptyDictionary() {
-        this.dictionaries = new ArrayList<>();
         this.dictionaries.add(new Dictionary());
         this.iterator = this.dictionaries.iterator();
     }

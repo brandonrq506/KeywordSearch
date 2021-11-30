@@ -21,15 +21,18 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader implements IFileHandler {
 
+    //Esto se puede abstraer en una clase conjunta
     private ExplorerFile fiEx;
-    private List<String> rowValues;
-
     private InputStream file;
     private XSSFWorkbook wb;
     private XSSFSheet ss;
 
+    //Esto es exclusivo del Excel Reader
     private Iterator<Row> rowIter;
     private Iterator<Cell> cellIter;
+    private List<String> rowValues;
+    
+    private Cell cell;
     private Row row;
 
     public ExcelReader(ExplorerFile fiEx) throws IOException {
@@ -73,7 +76,7 @@ public class ExcelReader implements IFileHandler {
         rowValues.clear();
 
         while (cellIter.hasNext()) {
-            Cell cell = cellIter.next();
+            cell = cellIter.next();
             switch (cell.getCellType()) {
                 case NUMERIC:
                     rowValues.add(String.valueOf(cell.getNumericCellValue()));

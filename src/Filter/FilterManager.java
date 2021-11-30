@@ -58,4 +58,8 @@ public class FilterManager {
     public List<Conversation> getMatchList(){
         return this.match;
     }
+    
+    public List<Conversation> getNoMatchList(){
+        return this.noMatch;
+    }
 }

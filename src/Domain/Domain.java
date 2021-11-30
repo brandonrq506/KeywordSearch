@@ -48,6 +48,7 @@ public class Domain {
         new Template(
             new ExcelReader(currentExcel),
             new ExcelWriter(currentExcel),
+            new ExcelWriterNoMatch(currentExcel),
             dMethod,
             filManager
         ).run();
