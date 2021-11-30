@@ -17,6 +17,8 @@ public class Finder_Factory {
                 return new Finder_Sales();
             case "marki2":
                 return new Finder_Marki2();
+            case "adabot":
+                return new Finder_ADA();
             default:
                 return null;
         }

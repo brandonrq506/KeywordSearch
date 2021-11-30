@@ -8,6 +8,8 @@ public class ExplorerFile{
     private final File[] files;
     private int currentFileIndex;
     
+    
+    //Is initialized in FileExplorerDialog
     public ExplorerFile(File[] files){
         this.files = files;
         printFiles();

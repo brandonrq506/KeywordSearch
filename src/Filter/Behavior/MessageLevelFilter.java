@@ -7,7 +7,9 @@ public class MessageLevelFilter extends FilterBehavior {
     @Override
     public boolean filter() {
         boolean found = false;
+        //Each message
         for (Message m : messages) {
+            //Is compared against each keywords
             for (String k : keywords) {
                 if (k.contains("-")) {
                     found = groupKeyFinder(m, k.split("-"));

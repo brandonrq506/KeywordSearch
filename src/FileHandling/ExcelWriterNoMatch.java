@@ -24,7 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Conversation will be printed with the following 'header' Disposition
  * Transcript Email Phone Number Conversation
  */
-public class ExcelWriter implements IFileHandler {
+public class ExcelWriterNoMatch implements IFileHandler {
 
     private CellStyleManager cellStyle;
 
@@ -36,9 +36,11 @@ public class ExcelWriter implements IFileHandler {
     private Cell cell;
     private Row row;
 
+    //La nueva version no tendra esta lista, ya que la lista vendrrá de
+    //Filter Manager
     private List<Conversation> conversations;
 
-    public ExcelWriter(ExplorerFile fiEx) throws FileNotFoundException {
+    public ExcelWriterNoMatch(ExplorerFile fiEx) throws FileNotFoundException {
         this.fiEx = fiEx;
         this.conversations = new ArrayList<>();
     }
@@ -53,17 +55,15 @@ public class ExcelWriter implements IFileHandler {
         //shuffle();
         for (Conversation c : conversations) {
 
+            addColumn(c.getDisposition());
+            addColumn(c.getTranscriptId());
+            addAdditionalColumns(c.getAdditionalColumns());
+
             if (c.getMessagesCount() > 0) {
 
                 c.getAllMessages().forEach(m -> {
                     addRow(m.getText());
                     cellStyle.setStyle(cell, m.getSender());
-                    if (m.hasPassedFilter()) {
-                        cellStyle.setStyle(cell, 4);
-                        addColumn(c.getDisposition());
-                        addColumn(c.getTranscriptId());
-                        addAdditionalColumns(c.getAdditionalColumns());
-                    }
                 });
             }
             conversationSeparator();
@@ -73,7 +73,7 @@ public class ExcelWriter implements IFileHandler {
     @Override
     public void open() throws FileNotFoundException {
         this.wb = new XSSFWorkbook();
-        this.ss = wb.createSheet("Testing this");
+        this.ss = wb.createSheet("NoMatches");
         sheetConfig();
     }
 
@@ -82,7 +82,7 @@ public class ExcelWriter implements IFileHandler {
         System.out.println("Total: " + conversations.size());
         try {
             try (
-                    FileOutputStream out = new FileOutputStream(new File("E:\\Ramirez\\Downloads\\" + "Results.xlsx"))) {
+                     FileOutputStream out = new FileOutputStream(new File("E:\\Ramirez\\Downloads\\" + "NOmatch.xlsx"))) {
                 wb.write(out);
                 System.out.println("File closed");
             }
