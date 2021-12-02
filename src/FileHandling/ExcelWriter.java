@@ -79,7 +79,7 @@ public class ExcelWriter implements IFileHandler {
 
     @Override
     public void close() {
-        System.out.println("Total: " + conversations.size());
+        System.out.println("Match Total: " + conversations.size());
         try {
             try (
                     FileOutputStream out = new FileOutputStream(new File("E:\\Ramirez\\Downloads\\" + "Results.xlsx"))) {

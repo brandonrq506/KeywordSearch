@@ -27,7 +27,16 @@ public class Template {
             Conversation chat = new Conversation();
             chat.setDisplayMethod(displayMethod);
             chat.transform(exread.getNext());
-            filterManager.Filter(chat);
+            if(chat.getMessagesCount() > 0) {
+                filterManager.Filter(chat);
+            } else{
+                //Es peligroso simplemente ignorar todo chat que no tenga mensajes en base al programa
+                //ya que pueden ser los mayor indicios que tenemos de bugs.
+                //Mejor imprimir algo en consola en caso de que esto ocurra y siempre revisarlos manualmente
+                //En caso de realmente haber un chat con 0 mensajes, deberíamos capturar ese detalle antes en
+                //la logica del programa. Pero de momento: 
+                System.out.println("Found chat with no messages. Make sure is not a bug: " + chat.getTranscriptId());
+            }
         }
 
         try {
